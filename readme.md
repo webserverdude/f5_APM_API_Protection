@@ -18,13 +18,14 @@ For my lab I used BIG-IP 16.1.
 
 For developing a solution I needed an API. Since I was at a stage of my life, where I thought learning go might be beneficial, I found a simple boilerplate in Go and adjusted it to my liking. My API is available here: [Gin API for Managing Gin Spirits](https://github.com/webserverdude/go-gin-api).
 
+My server has an OpenAPI file, you can either download it from my github or from [https://api-server-ip:8000/openapi.json](https://api-server-ip:8000/openapi.json).
+
 ## Setting up the solution
 
 ### API Protection profile
 
-Start by creating the API Protection profile in the __Access__ section, go to __Access  ››  API Protection : Profile__ and click __Create__.
-
-To follow my steps give it a name and upload the OpenAPI file. You can either download it from my github or from [https://api-server-ip:8000/openapi.json](https://api-server-ip:8000/openapi.json).
+Start by creating an __API Protection profile__ in the __Access__ section, go to __Access  ››  API Protection : Profile__ and click __Create__.
+Give it a name and upload the OpenAPI file. 
 Choose SSL Profile, and DNS Resolver. Check the __Ignore Default Server__ box. Hit the __Save__ button.
 
 On the __Paths__ tab everything is populated automatically from the OpenAPI file, you don't have to change anything here.
