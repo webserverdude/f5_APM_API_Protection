@@ -1,0 +1,113 @@
+{
+	"info": {
+		"_postman_id": "7c193e10-a493-4bca-8a41-9cdb89f5133d",
+		"name": "Gin REST API with Go",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13560190"
+	},
+	"item": [
+		{
+			"name": "Get all Spirits",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\": \"4\",\"title\": \"The Modern Sound of Betty Carter\",\"artist\": \"Betty Carter\",\"price\": 49.99}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://192.168.57.100/gins",
+					"protocol": "https",
+					"host": [
+						"192",
+						"168",
+						"57",
+						"100"
+					],
+					"path": [
+						"gins"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Spirit by ID 3",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\": \"4\",\"title\": \"The Modern Sound of Betty Carter\",\"artist\": \"Betty Carter\",\"price\": 49.99}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://192.168.57.100/gins/3",
+					"protocol": "https",
+					"host": [
+						"192",
+						"168",
+						"57",
+						"100"
+					],
+					"path": [
+						"gins",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Spirit - No.3 London Dry",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "apikey",
+						"value": "9001",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\": \"4\",\"Name\": \"No.3 London Dry Gin 0,7 Liter\",\"Description\": \"No.3 London Dry Gin 0,7 Liter – Die No.1 für einen Dry Martini\",\"price\": 39.49}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://192.168.57.100/gins",
+					"protocol": "https",
+					"host": [
+						"192",
+						"168",
+						"57",
+						"100"
+					],
+					"path": [
+						"gins"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

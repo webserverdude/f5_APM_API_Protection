@@ -1,8 +1,8 @@
 # Empowering B2B API Security: Enforcing Rate Limiting with BIG-IP APM and Custom iRules
 
-## The problem: Unprotected API - Vulnerable to Overload Without Rate-Limiting Enforcement"
+## The problem: Unprotected API - Vulnerable to Overload Without Rate-Limiting Enforcement
 
-Our customer in the B2B sector is encountering a challenge with their public API. Despite having implemented a custom method for generating long-lived API keys, they find themselves unable to enforce rate-limiting effectively. This absence of rate-limiting mechanisms poses significant challenges, potentially resulting in the overloading of their system due to excessive requests or the exploitation of their API by unauthorized users. Without proper rate-limiting controls in place, the customer faces risks to both the performance and security of their API infrastructure, necessitating a solution to mitigate these concerns and ensure the smooth operation of their services for their customers. Our customer offers either a Gold or a Standard SLA to his customers.
+Our customer in the B2B sector is encountering a challenge with their public API. Despite having implemented a custom method for generating long-lived API keys, they find themselves unable to enforce rate-limiting effectively. This absence of rate-limiting mechanisms poses significant challenges, potentially resulting in the overloading of their system due to excessive requests or the exploitation of their API by unauthorized users. Without proper rate-limiting controls in place, the customer faces risks to both the performance and security of their API infrastructure, necessitating a solution to mitigate these concerns and ensure the smooth operation of their services for their clients. Our customers wants to offer two tiers of service level agreements (SLAs) - gold and standard. Complicating matters further, the API key, integral to authentication, is transmitted via a custom HTTP header.
 
 ## The solution: BIG-IP APM and Custom iRules for Effective Rate-Limiting
 
@@ -159,6 +159,7 @@ curl --location 'https://192.168.57.100/gins' \
 --header 'apikey: 9001' \
 --header 'Content-Type: application/json' \
 --data '{"id": "4","Name": "No.3 London Dry Gin 0,7 Liter","Description": "No.3 London Dry Gin 0,7 Liter – Die No.1 für einen Dry Martini","price": 39.49}'
+--http2
 ```
 
 Now in the LTM log (if logging is enabled in the iRule), you should see:
@@ -169,4 +170,19 @@ Apr 28 13:03:42 ltm-apm-16.mylab.local info tmm3[17819]: Rule /Common/rule_api_r
 
 This should change with the API Key you use, either the SLA is Gold (9000) or Standard (9001).
 
-In the APM log, you should see,
+In the APM log you should see the following message, once the client exceeds his quota defined in the SLA.
+
+```bash
+Apr 28 20:12:42 ltm-apm-16.mylab.local notice tmm[11094]: 01870075:5: (null):/Common: API request with weight (1) violated the quota in rate limiting config(/Common/demo_api_ratelimiting_auto_rate_limiting_standard).
+Apr 28 20:12:42 ltm-apm-16.mylab.local notice tmm[11094]: 0187008d:5: /Common/demo_api_ratelimiting_ap:Common:6600283561834577940: Execution of per request access policy (/Common/demo_api_ratelimiting_prp) done with ending type (Reject)
+```
+
+And in Postman you should see a __HTTP response 429 - Too Many Requests__.
+
+![429 Too Many Requests](assets/HTTP_429_TooMany.png)
+
+## Additional Resources
+
+### Postman Collection
+
+[Gin REST API with Go.postman_collection.json](assets/Gin%20REST%20API%20with%20Go.postman_collection.json)
