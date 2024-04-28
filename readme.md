@@ -6,7 +6,7 @@ Our customer in the B2B sector is encountering a challenge with their public API
 
 ## The solution: BIG-IP APM and Custom iRules for Effective Rate-Limiting
 
-My solution involves leveraging the API Protection feature of BIG-IP APM in conjunction with a custom iRule. By utilizing this combination, our customer can effectively extract the API Keys from HTTP requests and enforce rate limiting on specific API endpoints. This approach empowers the customer to secure their SOAP API while efficiently managing and controlling access to critical endpoints, ensuring optimal performance and safeguarding against abuse or overload.
+My solution involves leveraging the API Protection feature of BIG-IP APM in conjunction with a custom iRule. By utilizing this combination, our customer can effectively extract the API Keys from HTTP requests and enforce rate limiting on specific API endpoints. As for now they only want to enforce rate limiting on the POST endpoints. This approach empowers the customer to secure their API while efficiently managing and controlling access to critical endpoints, ensuring optimal performance and safeguarding against abuse or overload.
 
 ## Prerequisites
 
