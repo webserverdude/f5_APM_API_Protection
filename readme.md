@@ -39,7 +39,7 @@ Also on the __Responses__ you have to change anything.
 
 On the __Rate Limiting__ tab create a _Key_ with the following attributes:
 
-* Name: <YourChoice>
+* Name: `YourChoice`
 * Key Name: SourceIP
 * Key Value: `%{perflow.client.ip.address}`
 
